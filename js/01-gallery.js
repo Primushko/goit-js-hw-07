@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const galleryList = document.querySelector(".gallery");
+const gallery = document.querySelector(".gallery");
 
 const galleryItemsMarkup = galleryItems
     .map(
@@ -21,7 +21,17 @@ const galleryItemsMarkup = galleryItems
     )
     .join("");
 
-    galleryList.insertAdjacentHTML("beforeend", galleryItemsMarkup);
+gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
+
+gallery.addEventListener(`click`, onGalleryClick);
+function onGalleryClick(event) {
+    event.preventDefault();
+    const target = event.target;
+    if (target.nodeName !== `IMG`) {
+    return;
+    }
+    console.log(event.target);
+}
 
     
 
