@@ -26,10 +26,16 @@ function onGalleryClick(event) {
     const target = event.target;
     if (target.nodeName !== `IMG`) {
     return;
-    }  
+    }
     const instance = basicLightbox.create(
-        `<img src="${target.dataset.source}" width="800" height="600">`
+    `<img src="${target.dataset.source}" width="800" height="600">`
     );
     instance.show();
-    // console.log(event.target);
+  // console.log(event.target);
+    // function onEscKeyPress(event) {
+    // const ESC_KEY_CODE = 'Escape';
+    // const isEscKey = event.code === ESC_KEY_CODE;
+    // if (!isEscKey) return;
+    // instance.close();
+    // }
 } 
