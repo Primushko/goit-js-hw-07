@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
@@ -29,8 +29,12 @@ function onGalleryClick(event) {
     const target = event.target;
     if (target.nodeName !== `IMG`) {
     return;
-    }
-    console.log(event.target);
+    }  
+    const instance = basicLightbox.create(
+        `<img src="${target.dataset.source}" width="800" height="600">`
+    );
+    instance.show();
+    // console.log(event.target);
 }
 
     
