@@ -28,14 +28,23 @@ function onGalleryClick(event) {
     return;
     }
     const instance = basicLightbox.create(
-    `<img src="${target.dataset.source}" width="800" height="600">`
+        `<img src="${target.dataset.source}" width="800" height="600">`, {
+    
+        onShow: () => {
+            document.addEventListener(`keydown`, onEscapePress);
+        },
+        onClose: () => {
+            document.removeEventListener(`keydown`, onEscapePress);
+        }
+    }
     );
+    
     instance.show();
+    function onEscapePress(event) {
+        if (event.code === `Escape`) {
+            instance.close();
+        }
+    }
   // console.log(event.target);
-    // function onEscKeyPress(event) {
-    // const ESC_KEY_CODE = 'Escape';
-    // const isEscKey = event.code === ESC_KEY_CODE;
-    // if (!isEscKey) return;
-    // instance.close();
-    // }
+
 } 
