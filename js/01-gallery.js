@@ -1,25 +1,22 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
 // console.log(galleryItems);
-
 const gallery = document.querySelector(".gallery");
 
 const galleryItemsMarkup = galleryItems
     .map(
     ({ preview, original, description }) => `
     <li class="gallery__item">
-    <a class="gallery__link" href="${original}">
-    <img
-        class="gallery__image"
-        src="${preview}"
-        data-source="${original}"
-        alt="${description}"
-    />
-    </a>
+        <a class="gallery__link" href="${original}">
+            <img
+            class="gallery__image"
+            src="${preview}"
+            data-source="${original}"
+            alt="${description}"
+            />
+        </a>
     </li>`
-    )
-    .join("");
+    ).join("");
 
 gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
 
@@ -35,8 +32,4 @@ function onGalleryClick(event) {
     );
     instance.show();
     // console.log(event.target);
-}
-
-    
-
-
+} 
