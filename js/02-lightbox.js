@@ -3,21 +3,39 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 const gallery = document.querySelector(".gallery");
+//                 ---- МЕТОД map + join ---
+// const galleryItemsMarkup = galleryItems
+//     .map(
+//         ({ preview, original, description }) => `
+//         <li class="gallery__item">
+//             <a class="gallery__link" href="${original}">
+//             <img class="gallery__image"
+//             src="${preview}"            
+//             alt="${description}"/>
+//             </a>
+//         </li>`
+//         )
+//     .join("");
+// console.log(galleryItemsMarkup);
+//                   ---- МЕТОД reduce ---
+const galleryItemsMarkup = galleryItems.reduce(
+    (acc, { preview, original, description }) =>
+        acc +
+        `<li class="gallery__item">
+            <a class="gallery__link" href="${original}">
+            <img class="gallery__image"
+            src="${preview}"            
+            alt="${description}"/>
+            </a>
+    </li>`, ``
+);
+console.log(galleryItemsMarkup);
 
-const galleryItemsMarkup = galleryItems
-    .map(
-    ({ preview, original, description }) => `
-    <li class="gallery__item">
-        <a class="gallery__link" href="${original}">
-            <img
-            class="gallery__image"
-            src="${preview}"
-            data-source="${original}"
-            alt="${description}"
-            />
-        </a>
-    </li>`
-    ).join("");
+
+
+
+
+
 
 // gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
 
