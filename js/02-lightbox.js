@@ -19,15 +19,19 @@ const gallery = document.querySelector(".gallery");
 // console.log(galleryItemsMarkup);
 //                   ---- МЕТОД reduce ---
 const galleryItemsMarkup = galleryItems.reduce(
-    (acc, { preview, original, description }) =>
-        acc +
-        `<li class="gallery__item">
+  (acc, { preview, original, description }) =>
+    acc +
+    `<li class="gallery__item">
             <a class="gallery__link" href="${original}">
+            <div class="gallery__image-container">
             <img class="gallery__image"
             src="${preview}"            
             alt="${description}"/>
+            <div class="gallery__caption">${description}</div>
+            </div>
             </a>
-    </li>`, ``
+    </li>`,
+  ``
 );
 // console.log(galleryItemsMarkup);
 //             -----  виводимо галерею на екран -------
@@ -46,17 +50,19 @@ function onGalleryClick(event) {
   // console.log(event.target);
   // Ініціалізація галереї після створення і додання елементів галереї
     const lightbox = new SimpleLightbox(".gallery a");
-    lightbox.on("show.simplelightbox", function () {
-    // Do something…
+    // lightbox.on("show.simplelightbox", function () {
+    // // Do something…
+    // });
+    lightbox.on("shown.simplelightbox", function (event) {
+      const imageCaption = event._target.querySelector(".gallery__caption");
+      setTimeout(function () {
+        imageCaption.style.opacity = 1;
+      }, 250);
     });
 
-    lightbox.on("error.simplelightbox", function (event) {
-    console.log(event); // Some usefull information
-    });
+    
+    // lightbox.on("error.simplelightbox", function (event) {
+    // console.log(event); // Some usefull information
+    // });
 
-  //    ------ майже однаково -----
-  // lightbox = $(".gallery a").simpleLightbox();
-  // lightbox.on("show.simplelightbox", function () {
-  //   // Do something…
-  // });
 }
