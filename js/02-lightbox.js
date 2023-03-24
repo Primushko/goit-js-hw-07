@@ -47,4 +47,8 @@ function onGalleryClick(event) {
     lightbox.on("show.simplelightbox", function () {
     // Do something…
     });
+    lightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionDelay: 250,
+  });
 }
