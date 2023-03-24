@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 const gallery = document.querySelector(".gallery");
 //                 ---- МЕТОД map + join ---
 // const galleryItemsMarkup = galleryItems
@@ -29,27 +29,24 @@ const galleryItemsMarkup = galleryItems.reduce(
             </a>
     </li>`, ``
 );
-console.log(galleryItemsMarkup);
+// console.log(galleryItemsMarkup);
+//             -----  виводимо галерею на екран -------
+gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
+
+//              ------  робимо клік по фото ----------
+gallery.addEventListener(`click`, onGalleryClick);
+
+function onGalleryClick(event) {
+    // зупиняємо перезавантаження сторінки
+    event.preventDefault();  
+    const target = event.target;
+    if (target.nodeName !== `IMG`) {
+    return;
+    }
+    // console.log(event.target);
+}
 
 
-
-
-
-
-
-// gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
-
-// gallery.addEventListener(`click`, onGalleryClick);
-
-// function onGalleryClick(event) {
-
-    // event.preventDefault();
-    
-//   const target = event.target;
-//   if (target.nodeName !== `IMG`) {
-//     return;
-//   }
-    
 //   const instance = basicLightbox.create(
 //     `<img src="${target.dataset.source}" width="800" height="600">`,
 //     {
