@@ -29,7 +29,6 @@ const galleryItemsMarkup = galleryItems.reduce(
             </a>
     </li>`, ``
 );
-// console.log(galleryItemsMarkup);
 //             -----  виводимо галерею на екран -------
 gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
 //              ------  робимо клік по фото ----------
@@ -42,12 +41,8 @@ function onGalleryClick(event) {
     if (target.nodeName !== `IMG`) {
     return;
     } 
-  // Ініціалізація галереї після створення і додання елементів галереї
-    const lightbox = new SimpleLightbox(".gallery a");
-    lightbox.on("show.simplelightbox", function () {
-    // Do something…
-    });
-    lightbox = new SimpleLightbox(".gallery a", {
+    
+    let lightbox = new SimpleLightbox(".gallery a", {
     captionsData: "alt",
     captionDelay: 250,
   });
