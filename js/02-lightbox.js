@@ -37,34 +37,26 @@ gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup);
 gallery.addEventListener(`click`, onGalleryClick);
 
 function onGalleryClick(event) {
-    // зупиняємо перезавантаження сторінки
-    event.preventDefault();  
+  // зупиняємо перезавантаження сторінки
+    event.preventDefault();
     const target = event.target;
     if (target.nodeName !== `IMG`) {
     return;
     }
-    // console.log(event.target);
-}
-
-
-//   const instance = basicLightbox.create(
-//     `<img src="${target.dataset.source}" width="800" height="600">`,
-//     {
-//       onShow: () => {
-//         document.addEventListener(`keydown`, onEscapePress);
-//       },
-//       onClose: () => {
-//         document.removeEventListener(`keydown`, onEscapePress);
-//       },
-//     }
-//   );
-
-//   instance.show();
-    
-//   function onEscapePress(event) {
-//     if (event.code === `Escape`) {
-//       instance.close();
-//     }
-//   }
   // console.log(event.target);
-// } 
+  // Ініціалізація галереї після створення і додання елементів галереї
+    const lightbox = new SimpleLightbox(".gallery a");
+    lightbox.on("show.simplelightbox", function () {
+    // Do something…
+    });
+
+    lightbox.on("error.simplelightbox", function (event) {
+    console.log(event); // Some usefull information
+    });
+
+  //    ------ майже однаково -----
+  // lightbox = $(".gallery a").simpleLightbox();
+  // lightbox.on("show.simplelightbox", function () {
+  //   // Do something…
+  // });
+}
